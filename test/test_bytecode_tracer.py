@@ -11,7 +11,8 @@ from nose.tools import assert_equal
 from pythoscope.store import CodeTree
 from pythoscope.util import write_content_to_file
 
-from bytecode_tracer import BytecodeTracer, rewrite_function
+from bytecode_tracer import BytecodeTracer, rewrite_functionimport unittest
+
 
 
 return_value = None
@@ -560,6 +561,10 @@ class TestRewriteFunction:
         rewrite_function(meth)
         assert_equal(meth(1), 2)
 
+    def test_rewrite_function(self):
+        # self.assertEqual(expected, rewrite_function(function))
+        assert False  # TODO: implement your test here
+
 class TestImportSupportWithOtherModules(TestBytecodeTracer):
     def test_support_with_pickle(self):
         self.btracer.setup()
@@ -574,3 +579,5 @@ class TestImportSupportWithOtherModules(TestBytecodeTracer):
         #   TypeError: _import_hook() takes at most 5 arguments (6 given)
         cPickle.dumps(CodeTree(None), cPickle.HIGHEST_PROTOCOL)
         self.btracer.teardown()
+if __name__ == '__main__':
+    unittest.main()
