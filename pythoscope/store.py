@@ -11,7 +11,8 @@ from pythoscope.logger import log
 from pythoscope.serializer import SerializedObject
 from pythoscope.util import all_of_type, assert_argument_type, class_name,\
     directories_under, extract_subpath, findfirst, load_pickle_from,\
-    starts_with_path, write_content_to_file, DirectoryException
+    starts_with_path, write_content_to_file, DirectoryExceptionimport unittest
+
 
 ########################################################################
 ## Project class and helpers.
@@ -506,6 +507,35 @@ class TestMethod(ObjectInModule, TestCase):
         ObjectInModule.__init__(self, name, code)
         TestCase.__init__(self, parent)
 
+    def test___init__(self):
+        # method = Method(name, args, code, is_generator, klass)
+        assert False  # TODO: implement your test here
+
+    def test___repr__(self):
+        # method = Method(name, args, code, is_generator, klass)
+        # self.assertEqual(expected, method.__repr__())
+        assert False  # TODO: implement your test here
+
+    def test_get_call_args(self):
+        # method = Method(name, args, code, is_generator, klass)
+        # self.assertEqual(expected, method.get_call_args())
+        assert False  # TODO: implement your test here
+
+    def test_is_creational(self):
+        # method = Method(name, args, code, is_generator, klass)
+        # self.assertEqual(expected, method.is_creational())
+        assert False  # TODO: implement your test here
+
+    def test_is_private(self):
+        # method = Method(name, args, code, is_generator, klass)
+        # self.assertEqual(expected, method.is_private())
+        assert False  # TODO: implement your test here
+
+    def test_is_special(self):
+        # method = Method(name, args, code, is_generator, klass)
+        # self.assertEqual(expected, method.is_special())
+        assert False  # TODO: implement your test here
+
 class TestSuite(TestCase):
     """A test objects container.
 
@@ -711,6 +741,8 @@ class GeneratorObject(Callable, SerializedObject):
         SerializedObject.__init__(self, obj)
         if generator is not None and args is not None and callable is not None:
             self.activate(generator, args, callable)
+        self.definition = None
+        self.args = None
 
     def activate(self, generator, args, callable):
         assert_argument_type(generator, (Function, Method))
@@ -761,7 +793,7 @@ class UserObject(Callable, SerializedObject):
 
     # Defined lazily to ease testing - classes may be assigned to modules after
     # creation of UserObject, or never at all.
-    module_name = property(lambda self: self.klass.module.locator, lambda s,v: None)
+    module_name = property(lambda self: self.klass.module.locator, lambda s, v: None)
 
     def get_init_call(self):
         """Return a call to __init__ or None if it wasn't called.
@@ -836,6 +868,46 @@ class TestClass(ObjectInModule, TestSuite):
 ########################################################################
 ## The Module class.
 ##
+
+    def test___init__(self):
+        # class = Class(name, methods, bases, code, module)
+        assert False  # TODO: implement your test here
+
+    def test___repr__(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.__repr__())
+        assert False  # TODO: implement your test here
+
+    def test_add_methods(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.add_methods(methods))
+        assert False  # TODO: implement your test here
+
+    def test_add_user_object(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.add_user_object(user_object))
+        assert False  # TODO: implement your test here
+
+    def test_find_method_by_name(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.find_method_by_name(name))
+        assert False  # TODO: implement your test here
+
+    def test_get_creational_method(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.get_creational_method())
+        assert False  # TODO: implement your test here
+
+    def test_get_traced_method_names(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.get_traced_method_names())
+        assert False  # TODO: implement your test here
+
+    def test_get_untraced_methods(self):
+        # class = Class(name, methods, bases, code, module)
+        # self.assertEqual(expected, class.get_untraced_methods())
+        assert False  # TODO: implement your test here
+
 class Module(Localizable, TestSuite):
     allowed_test_case_classes = [TestClass]
 
@@ -953,3 +1025,5 @@ class Module(Localizable, TestSuite):
                 raise ModuleSaveError(self.subpath, err.args[0])
             self.changed = False
 
+if __name__ == '__main__':
+    unittest.main()

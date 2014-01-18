@@ -25,6 +25,9 @@ _ModuleType = type(sys)         ### doesn't work in JPython...
 
 class ImportManager:
     "Manage the import process."
+    def __init__(self):
+        self.previous_importer = None
+        self.namespace = None
 
     def install(self, namespace=vars(__builtin__)):
         "Install this ImportManager into the specified namespace."

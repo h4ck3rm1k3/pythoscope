@@ -212,7 +212,7 @@ class StandardTracer(object):
         elif event == 'print':
             pass # TODO
         elif event == 'print_to':
-            value, output = args
+            #value, output = args
             pass # TODO
         elif event == 'store_attr':
             obj, name, value = args
@@ -306,6 +306,7 @@ class StandardTracer(object):
     def record_c_call(self, func, pargs, kargs):
         func_name = func.__name__
         obj = get_self_from_method(func)
+        print ("TODO: CHECK c_call:%s" % kargs)
         if obj is not None:
             klass = type(obj)
             self.callback.c_method_called(obj, klass, func_name, pargs)

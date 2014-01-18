@@ -173,6 +173,7 @@ class ASTVisitor(object):
             self.visit(node.children)
 
     def visit_class(self, name, bases, body):
+        print("TODO: visit class %s  bases %s" % (name, bases))
         self.visit(body.children)
 
     def visit_function(self, name, args, body):

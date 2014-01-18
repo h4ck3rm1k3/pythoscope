@@ -4,3 +4,4 @@ lib2to3/PatternGrammar*.pickle
 build/
 dist/
 *.pyc
+.pythoscope/

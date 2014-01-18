@@ -18,7 +18,7 @@ from pythoscope.util import module_path_to_name
 
 DEBUG = logging.DEBUG
 ERROR = logging.ERROR
-INFO  = logging.INFO
+INFO = logging.INFO
 WARNING = logging.WARNING
 
 def path2modname(path, default=""):
